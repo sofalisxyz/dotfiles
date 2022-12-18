@@ -1,0 +1,35 @@
+[global]
+monitor = 0
+follow = keyboard
+font = monospace 14
+padding = 10
+horizontal_padding = 10
+sort = yes
+alignment = left
+word_wrap = yes
+stack_duplicates = no
+hide_duplicates_count = yes
+transparency = 0
+line_height = 1
+separator_height = 10
+icon_position = left
+max_icon_size = 80
+format = "<b>%a</b>\n%s\n%b %p"
+
+[urgency_low]
+frame_color = "#a89984"
+foreground = "#a89984"
+background = "#1d2021"
+timeout = 3
+
+[urgency_normal]
+frame_color = "#d79921"
+foreground = "#98971a"
+background = "#1d2021"
+timeout = 5
+
+[urgency_critical]
+frame_color = "#cc241d"
+foreground = "#fb4934"
+background = "#1d2021"
+timeout = 10
