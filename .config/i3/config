@@ -1,0 +1,221 @@
+# Variables:
+
+# common
+set $mod Mod4
+set $term st
+set $menu "dmenu_run -nb '#000000' -nf '#ffffff' -sb '#00b5ff' -sf '#000000'"
+set $font Dejavu Sans Mono
+
+
+# movements
+set $left Left
+set $up Up
+set $right Right
+set $down Down
+
+set $left2 h
+set $up2 k
+set $right2 l
+set $down2 j
+
+
+# workspaces
+set $ws1 workspace number 1
+set $ws2 workspace number 2
+set $ws3 workspace number 3
+set $ws4 workspace number 4
+set $ws5 workspace number 5
+set $ws6 workspace number 6
+set $ws7 workspace number 7
+set $ws8 workspace number 8
+set $ws9 workspace number 9
+set $ws10 workspace number 10
+
+
+# colors
+set $colorPrimary #00b5ff
+set $colorSecondary #00bbff
+set $colorWhite #ffffff
+set $colorLight #aaaaaa
+set $colorBlack #000000
+set $colorDark1 #141414
+set $colorDark2 #202020
+set $colorAlert #ff0000
+
+
+# Keybindings:
+
+# start terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# lock screen
+bindsym $mod+Shift+F10 exec i3lock -f -c 000000
+
+# start menu
+bindsym $mod+d exec $menu
+
+# make area screenshot
+bindsym $mod+Shift+p exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png --select > ~/Pictures/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/Pictures/screenshots/screenshot_$NOW.png
+
+# restart i3
+bindsym $mod+Shift+r reload
+
+# exit i3 and Xorg
+bindsym $mod+Shift+F12 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# idle (30 minutes)
+exec --no-startup-id xset dpms 0 0 1800
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+$left2 focus left
+bindsym $mod+$down2 focus down
+bindsym $mod+$up2 focus up
+bindsym $mod+$right2 focus right
+
+
+# move focused windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+$left2 move left
+bindsym $mod+Shift+$down2 move down
+bindsym $mod+Shift+$up2 move up
+bindsym $mod+Shift+$right2 move right
+
+
+# switch to workspace
+bindsym $mod+1 $ws1
+bindsym $mod+2 $ws2
+bindsym $mod+3 $ws3
+bindsym $mod+4 $ws4
+bindsym $mod+5 $ws5
+bindsym $mod+6 $ws6
+bindsym $mod+7 $ws7
+bindsym $mod+8 $ws8
+bindsym $mod+9 $ws9
+bindsym $mod+0 $ws10
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to $ws1
+bindsym $mod+Shift+2 move container to $ws2
+bindsym $mod+Shift+3 move container to $ws3
+bindsym $mod+Shift+4 move container to $ws4
+bindsym $mod+Shift+5 move container to $ws5
+bindsym $mod+Shift+6 move container to $ws6
+bindsym $mod+Shift+7 move container to $ws7
+bindsym $mod+Shift+8 move container to $ws8
+bindsym $mod+Shift+9 move container to $ws9
+bindsym $mod+Shift+0 move container to $ws10
+
+
+# layout view
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+space focus mode_toggle
+
+
+# resize mode
+bindsym $mod+r mode "resize"
+
+# change brightness
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+
+
+# manage audio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec  pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
+# setup wallpaper
+exec --no-startup-id feh --randomize --bg-scale ~/Pictures/wallpaper/* ~/Pictures/wallpaper/*
+
+# keyboard config
+exec --no-startup-id setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle
+
+
+# System parameters:
+
+# font
+font pango:$font 14
+
+# windows
+floating_modifier $mod
+
+default_border pixel 3
+default_floating_border pixel 3
+hide_edge_borders smart
+focus_follows_mouse no
+mouse_warping output
+popup_during_fullscreen smart
+
+
+# <colorclass>          <border>    <background> <text>        <indicator>   <child_border>
+client.focused          $colorBlack $colorBlack  $colorPrimary $colorPrimary $colorPrimary
+client.focused_inactive $colorDark1 $colorDark1  $colorWhite   $colorWhite   $colorWhite
+client.unfocused        $colorDark2 $colorDark2  $colorLight   $colorLight   $colorLight
+client.urgent           $colorDark1 $colorDark1  $colorAlert   $colorAlert   $colorAlert
+
+
+# gaps
+gaps inner 20
+gaps outer 0
+smart_gaps on
+
+
+# resize mode
+mode "resize" {
+    bindsym $left resize shrink width 70px
+    bindsym $right resize grow width 70px
+    bindsym $down resize grow height 70px
+    bindsym $up resize shrink height 70px
+
+    bindsym $left2 resize shrink width 70px
+    bindsym $right2 resize grow width 70px
+    bindsym $down2 resize grow height 70px
+    bindsym $up2 resize shrink height 70px
+
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+# windows to specific workspaces
+#for_window [class="code"] move to $ws1
+for_window [class="Google-chrome"] move to $ws2
+
+
+
+# Startup:
+
+# status bar
+exec --no-startup-id ~/.config/polybar/launch.sh
+
+# sync
+exec --no-startup-id syncthing --no-browser
+
+# compositor
+exec --no-strartup-id picom
