@@ -152,7 +152,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpaper/* ~/Pictures/wallpaper/*
 
 # keyboard config
-exec --no-startup-id setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle
+exec --no-startup-id setxkbmap -model pc104 -layout us,ua,ru -variant ,, -option grp:win_space_toggle
 
 
 # System parameters:
