@@ -1,7 +1,7 @@
 [global]
 monitor = 0
 follow = keyboard
-font = monospace 14
+font = Dejavu Sans Mono 14
 padding = 10
 horizontal_padding = 10
 sort = yes
@@ -20,13 +20,13 @@ format = "<b>%a</b>\n%s\n%b %p"
 frame_color = "#a89984"
 foreground = "#a89984"
 background = "#1d2021"
-timeout = 3
+timeout = 5
 
 [urgency_normal]
 frame_color = "#d79921"
 foreground = "#98971a"
 background = "#1d2021"
-timeout = 5
+timeout = 8
 
 [urgency_critical]
 frame_color = "#cc241d"
