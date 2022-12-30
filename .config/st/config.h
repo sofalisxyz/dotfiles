@@ -5,10 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Dejavu Sans Mono:pixelsize=20:antialias=true:autohint=true";
+static char *font = "Dejavu Sans Mono Nerd Font:pixelsize=20:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"DejaVu Sans Mono Nerd Font:pixelsize=20:antialias=true:autohint=true",
+    "Noto Color Emoji:pixelsize=20:antialias=true:autohint=true",
 };
 static int borderpx = 2;
 
