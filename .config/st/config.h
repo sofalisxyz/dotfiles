@@ -8,7 +8,7 @@
 static char *font = "Dejavu Sans Mono Nerd Font:pixelsize=20:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-    "Noto Color Emoji:pixelsize=20:antialias=true:autohint=true",
+    "Font Awesome 6 Free:pixelsize=20:antialias=true:autohint=true",
 };
 static int borderpx = 2;
 
