@@ -1,6 +1,5 @@
 set font "JetBrains Mono 10"
 set selection-clipboard clipboard
-#set synctex-editor-command "st ... nvim"
 
 # Base16 Gruvbox dark, hard
 # Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
